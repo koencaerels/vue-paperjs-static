@@ -1,29 +1,23 @@
 <template>
     <div id="app">
 
-        <p>Application wrapper</p>
+        <GenerativeComponent></GenerativeComponent>
 
     </div>
 </template>
 
 <script>
 
+    import GenerativeComponent from "./components/GenerativeComponent";
+
     export default {
         name: 'App',
-        components: {}
+        components: {GenerativeComponent}
     }
 
 </script>
 
 <style>
 
-    #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
 
 </style>

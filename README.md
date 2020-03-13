@@ -4,11 +4,22 @@ Skeleton application for VueJS + PaperJS for static image (generative) creation.
 
 Image & SVG exports available.
 
+* https://vuejs.org/
+* http://paperjs.org/
+* https://buefy.org/
+
 #### Required
 
 Installed on your workstation -> npm & yarn
 
 #### Project setup
+
+Included in this project paperJS & Buefy
+
+    yarn add paper
+    yarn add buefy
+        
+
 ```
 yarn install
 ```
