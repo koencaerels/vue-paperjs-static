@@ -1,7 +1,10 @@
 <template>
-    <div id="Component_GenerativeComponent">
-        <div id="canvas-wrapper">
-            <canvas id="canvas-paper" width="800" height="600" ref="canvas" hidpi="off"></canvas>
+    <div id="Component_GenerativeComponent" :style="'width: '+configWork.width+'px'">
+        <div id="canvas-wrapper" :style="'width: '+configWork.width+'px;height:'+configWork.height+'px;'">
+            <canvas id="canvas-paper"
+                    :width="configWork.width"
+                    :height="configWork.height"
+                    ref="canvas" hidpi="off"></canvas>
         </div>
         <div id="toolbar">
             <div class="columns has-text-centered">
@@ -43,6 +46,10 @@
                 pCanvas: null
                 , radius: 150
                 , titleWork: "title of your work"
+                , configWork: {
+                    width: 1000
+                    , height: 600
+                }
             }
         }
         , watch: {}
@@ -58,11 +65,11 @@
             , renderComposition() {
                 // --------------------------------------------------------------------------------- render a background
                 let _start = new paper.Point(0, 0);
-                let _end = new paper.Point(800, 600);
+                let _end = new paper.Point(this.configWork.width, this.configWork.height);
                 let _background = new paper.Path.Rectangle(_start, _end);
                 _background.fillColor = new paper.Color(0.9, 0.9, 0.9);
                 // ------------------------------------------------------------------------------------- render the work
-                let center = new paper.Point(400, 300);
+                let center = new paper.Point(this.configWork.width / 2, this.configWork.height / 2);
                 let color = paper.Color.random();
                 new paper.Path.Circle({
                     center: center
@@ -70,7 +77,7 @@
                     , fillColor: color
                 });
                 // ------------------------------------------------------------------------------------ titling the work
-                let text = new paper.PointText(new paper.Point(400, 550));
+                let text = new paper.PointText(new paper.Point(this.configWork.width / 2, this.configWork.height - 30));
                 text.justification = 'center';
                 text.fillColor = 'gray';
                 text.fontFamily = 'monospace';
@@ -97,17 +104,16 @@
 <style scoped>
 
     #Component_GenerativeComponent {
-        width: 800px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 2em;
     }
 
     #canvas-wrapper {
-        background-color: #efefef;
+        margin:0;
+        padding:0;
         display: block;
-        width: 800px;
-        height: 600px;
+        background-color: #efefef;
     }
 
     #toolbar {
